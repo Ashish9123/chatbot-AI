@@ -1,0 +1,93 @@
+.message-wrapper {
+  display: flex;
+  gap: 15px;
+  animation: messageSlideIn 0.3s ease-out forwards;
+}
+
+.message-wrapper.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.message-wrapper.user .message-avatar {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.message-wrapper.ai .message-avatar {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+}
+
+.message-content {
+  max-width: 80%;
+}
+
+.message-bubble {
+  padding: 15px 20px;
+  border-radius: 18px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.message-wrapper.user .message-bubble {
+  background: var(--glass-message-user);
+  border: 1px solid var(--glass-message-user-border);
+  border-top-right-radius: 4px;
+}
+
+.message-wrapper.ai .message-bubble {
+  background: var(--glass-message-ai);
+  border: 1px solid var(--glass-border);
+  border-top-left-radius: 4px;
+}
+
+/* Markdown Styles inside AI bubble */
+.markdown-body {
+  color: var(--text-primary);
+}
+
+.markdown-body p:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.markdown-body pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 10px 0;
+  border: 1px solid var(--glass-border);
+}
+
+.markdown-body code {
+  font-family: 'Courier New', Courier, monospace;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+@keyframes messageSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
