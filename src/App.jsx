@@ -6,7 +6,6 @@ import './App.css';
 
 function App() {
   // 🔍 DEBUG: check if API key is loaded
-  console.log("API KEY:", import.meta.env.VITE_API_KEY);
 
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
