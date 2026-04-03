@@ -5,23 +5,22 @@ import { generateChatResponse } from './services/gemini';
 import './App.css';
 
 function App() {
+  // 🔍 DEBUG: check if API key is loaded
+  console.log("API KEY:", import.meta.env.VITE_API_KEY);
+
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = async (text) => {
-    // Add user message to UI immediately
     const userMsg = { role: 'user', content: text };
     setMessages(prev => [...prev, userMsg]);
     setIsLoading(true);
 
     try {
-      // Call Gemini API passing history (without the new message, we pass it separately)
       const aiResponse = await generateChatResponse(messages, text);
 
-      // Add AI response to UI
       setMessages(prev => [...prev, { role: 'ai', content: aiResponse }]);
     } catch (error) {
-      // Add error message to UI
       setMessages(prev => [...prev, {
         role: 'ai',
         content: `**Error:** ${error.message || 'Something went wrong. Please check your API key and connection.'}`
